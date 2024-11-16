@@ -1,0 +1,24 @@
+# Node modules (React frontend)
+frontend/node_modules/
+
+# Django-related files
+contact_project/contact_project/__pycache__/
+contact_project/contact_app/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# MySQL-related (skip MySQL database dumps and credentials)
+*.sql
+*.sqlite3
+*.db
+
+# Virtual environment
+assignment/
+
+# Environment files
+.env
+
+# Django migrations
+contact_project/contact_app/migrations/
+
