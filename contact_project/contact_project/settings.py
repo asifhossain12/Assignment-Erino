@@ -17,7 +17,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'assignment-erino-backend.onrender.com',  
+    'assignment-erino-frontend.onrender.com'
+]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -25,7 +28,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://assignment-erino-frontend.onrender.com"
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+
 
 # Application definition
 
