@@ -25,6 +25,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://assignment-erino-frontend.onrender.com"
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 # Application definition
 
 INSTALLED_APPS = [
