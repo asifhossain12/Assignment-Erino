@@ -27,7 +27,7 @@ const App = () => {
         }        
       });
 
-      const contactsData = response.data.results || [];  // Fallback to an empty array
+      const contactsData = response.data.results || [];  
       const totalCount = response.data.count;
 
       setContacts(response.data.results);  
