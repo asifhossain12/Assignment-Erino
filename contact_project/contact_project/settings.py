@@ -21,7 +21,9 @@ ALLOWED_HOSTS = []
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='').split(',')
+CORS_ALLOWED_ORIGINS = [
+    "https://assignment-erino-frontend.onrender.com"
+]
 
 # Application definition
 
