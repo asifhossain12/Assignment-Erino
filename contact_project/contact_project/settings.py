@@ -2,7 +2,6 @@
 from pathlib import Path
 
 from decouple import config
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,22 +12,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = False
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 
-ALLOWED_HOSTS = [
-    'assignment-erino-backend.onrender.com',  
-    'assignment-erino-frontend.onrender.com'
-]
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[]).split(',')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-CORS_ALLOWED_ORIGINS = [
-    "https://assignment-erino-frontend.onrender.com"
-]
-
-
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='').split(',')
 
 # Application definition
 
@@ -81,12 +73,12 @@ WSGI_APPLICATION = 'contact_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),  
-        'PORT': '5432',  
+        'ENGINE': config('DB_ENGINE'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
 
