@@ -8,9 +8,9 @@ from .models import Contact
 from .serializers import ContactSerializers
 
 class ContactPagination(PageNumberPagination):
-    page_size = 3 # Adjust the page size as needed
+    page_size = 3
     page_size_query_param = 'page_size'
-    max_page_size = 100  # You can limit the max number of items per page
+    max_page_size = 100 
 
 @api_view(['POST'])
 def create_contact(request):
@@ -23,23 +23,20 @@ def create_contact(request):
 
 @api_view(['GET'])
 def get_contacts(request):
-    # Get sorting query parameter (e.g., ?sort=first_name)
     sort_by = request.query_params.get('sort', None)
     
-    # If sorting is provided, use it; otherwise, default to all contacts
     if sort_by:
         contacts = Contact.objects.all().order_by(sort_by)
     else:
         contacts = Contact.objects.all()
     
-    # Add pagination
+    
     paginator = ContactPagination()
     paginated_contacts = paginator.paginate_queryset(contacts, request)
     
-    # Serialize the paginated data
     serializer = ContactSerializers(paginated_contacts, many=True)
     
-    # Return paginated data
+   
     return paginator.get_paginated_response(serializer.data)
 
 @api_view(['PUT'])
